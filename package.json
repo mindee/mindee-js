@@ -1,0 +1,59 @@
+{
+  "name": "mindee-js",
+  "version": "1.0.0-rc.1",
+  "description": "Front-End Computer Vision SDK",
+  "author": "@techmindee",
+  "license": "GPL-3.0",
+  "repository": "publicMindee/mindee-js",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "engines": {
+    "node": ">=10",
+    "npm": ">=5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-url": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2",
+    "rollup": "^2.33.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "typescript": "^4.0.5",
+    "uuid": "^8.3.1"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "react",
+    "vue",
+    "js",
+    "javascript",
+    "mindee",
+    "SDK",
+    "canvas",
+    "document",
+    "image",
+    "segmentation",
+    "processing",
+    "computer",
+    "vision"
+  ],
+  "dependencies": {
+    "@types/pdfjs-dist": "^2.1.6",
+    "@webcomponents/webcomponentsjs": "^2.5.0",
+    "konva": "^7.1.6",
+    "lit-element": "^2.4.0",
+    "pdfjs-dist": "^2.5.207"
+  }
+}

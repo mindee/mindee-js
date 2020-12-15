@@ -1,0 +1,10 @@
+node_modules
+rollup.config.js
+tsconfig.json
+.gitignore
+.eslintrc
+.prettierrc
+src
+dist
+.vscode
+.eslintignore

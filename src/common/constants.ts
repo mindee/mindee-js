@@ -10,14 +10,10 @@ export enum KONVA_REFS {
 
 export const DEFAULT_OPTIONS = {
   backgroundColor: 'black',
-  shape: {
-    default: {
-      stroke: 'red',
-      strokeWidth: 3,
-      listening: true,
-    },
-    onMouseEnter: {},
-    onMouseLeave: {},
+  shapeConfig: {
+    stroke: 'red',
+    strokeWidth: 3,
+    listening: true,
   },
 
   zoom: {

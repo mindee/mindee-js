@@ -2,6 +2,7 @@ import { Layer } from 'konva/types/Layer'
 import { Stage } from 'konva/types/Stage'
 import { mapPolygonToImage } from './image'
 import konva from 'konva'
+
 import { DEFAULT_OPTIONS, KONVA_REFS } from '../common/constants'
 import { AnnotationShape, Options } from 'common'
 import { Line } from 'konva/types/shapes/Line'
@@ -16,16 +17,17 @@ export const mapShapesToPolygons = (
   clearDeprecatedShapes(stage, shapes)
   return shapes.reduce((accumulator: Line[], shape: AnnotationShape) => {
     let polygon: Line | null = stage.findOne(`#${shape.id}`)
-    let shapeOptions = options.shape
-    if (shape.options) {
-      shapeOptions = {
-        ...shapeOptions,
-        ...shape.options,
+    let shapeConfig = options.shapeConfig
+    if (shape.config) {
+      shapeConfig = {
+        ...shapeConfig,
+        ...shape.config,
       }
     }
     if (polygon) {
       polygon.setAttrs({
-        ...shapeOptions.default,
+        ...polygon.getAttrs(),
+        ...shapeConfig,
         shape,
       })
       return accumulator
@@ -35,7 +37,7 @@ export const mapShapesToPolygons = (
       name: KONVA_REFS.shape,
       points: mapCoordinatesToPoints(shape.coordinates, imageBoundingBox),
       closed: true,
-      ...shapeOptions.default,
+      ...shapeConfig,
       shape,
     })
     const shapesLayer: Layer | null = stage.findOne(
@@ -53,9 +55,6 @@ export const mapShapesToPolygons = (
       stage.container().style.cursor = 'pointer'
     })
     polygon.on('mouseenter', async function (event) {
-      this.setAttrs({
-        ...shapeOptions.onMouseEnter,
-      })
       shapesLayer && shapesLayer.batchDraw()
       event.cancelBubble = true
       stage.container().style.cursor = 'pointer'
@@ -65,10 +64,6 @@ export const mapShapesToPolygons = (
       }
     })
     polygon.on('mouseleave', async function (event) {
-      polygon.setAttrs({
-        ...shapeOptions.default,
-        ...shapeOptions.onMouseLeave,
-      })
       shapesLayer && shapesLayer.batchDraw()
       event.cancelBubble = true
       stage.container().style.cursor = 'default'

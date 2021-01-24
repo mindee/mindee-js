@@ -4,11 +4,8 @@ export interface AnnotationShape {
   id: string
   coordinates: number[][]
   crop?: string
-  options?: {
-    default?: ShapeConfig
-    onMouseEnter?: ShapeConfig
-    onMouseLeave?: ShapeConfig
-  }
+  [key: string]: any
+  config?: ShapeConfig
 }
 
 export type Orientation = 0 | 90 | 180 | 270
@@ -20,11 +17,7 @@ export type Options = {
     max: number
     defaultZoom: number
   }
-  shape?: {
-    default?: ShapeConfig
-    onMouseEnter?: ShapeConfig
-    onMouseLeave?: ShapeConfig
-  }
+  shapeConfig?: ShapeConfig
 }
 
 export type ImageBoundingBox = {

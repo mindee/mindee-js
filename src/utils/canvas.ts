@@ -27,6 +27,7 @@ export const mapShapesToPolygons = (
     if (polygon) {
       polygon.setAttrs({
         ...polygon.getAttrs(),
+        points: mapCoordinatesToPoints(shape.coordinates, imageBoundingBox),
         ...shapeConfig,
         shape,
       })
